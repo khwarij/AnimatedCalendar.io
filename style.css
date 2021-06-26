@@ -1,0 +1,461 @@
+
+
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap");
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: #B8F0FF;
+  overflow: hidden;
+  position: relative;
+  outline: none;
+  perspective: 1000px;
+}
+
+.main {
+  position: absolute;
+  width: 730px;
+  height: 420px;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%);
+  transition: all 0.195s ease;
+  transform-style: preserve-3d;
+}
+.main.is-rotated-left {
+  transform: translate(-50%, -50%) rotateY(-4deg);
+}
+.main.is-rotated-right {
+  transform: translate(-50%, -50%) rotateY(4deg);
+}
+.main .sideb,
+.main .right-wrapper {
+  background-color: white;
+  width: 50%;
+  float: left;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.main .header {
+  padding: 15px 0 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.main .header i {
+  padding: 0 5px;
+  cursor: pointer;
+}
+.main .header span {
+  display: inline-block;
+  margin: 0 3px;
+  font-weight: 700;
+}
+.main .right-wrapper {
+  background-color: #f05855;
+  color: white;
+  transform-origin: left center;
+  transform: rotateY(110deg);
+  transition: all 0.5s;
+}
+.main .right-wrapper.is-active {
+  transform: rotateY(0deg);
+}
+.main .right-wrapper .header {
+  text-align: left;
+  justify-content: center;
+}
+.main .right-wrapper .day {
+  font-size: 12em;
+  text-indent: -12px;
+  display: block;
+}
+.main .right-wrapper .month {
+  font-size: 2.5em;
+}
+.main .sideb .showDate {
+  color: white;
+  text-align: right;
+  width: 100%;
+}
+.main .sideb .showDate i {
+  cursor: pointer;
+  background: #f05855;
+  border-radius: 4px;
+  padding: 8px 12px;
+  transform: scale(1);
+  transition: all 0.3s;
+}
+.main .sideb .showDate i.is-active {
+  transform: scale(-1);
+}
+.main .sideb table {
+  text-align: center;
+
+  width: 90%;
+  margin: 30px auto 0;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.main .sideb table tbody:before {
+  content: "-";
+  display: block;
+  line-height: 0.75em;
+  color: transparent;
+}
+.main .sideb table th {
+  color: #f05855;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.main .sideb table td {
+  padding: 11px 5px;
+  color: #ced0ce;
+  font-size: 0.75em;
+  transition: all 0.3s;
+  position: relative;
+}
+.main .sideb table td::before {
+  content: "";
+  display: none;
+  width: 50%;
+  height: 2px;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -8px);
+  background-color: #f05855;
+}
+.main .sideb table td.currentDay::before {
+  display: block;
+}
+.main .sideb table td.selectable {
+  color: #303633;
+  cursor: pointer;
+}
+.main .sideb table td.selectable:hover {
+  background: #f05855;
+  color: white;
+}
+.main .sideb table td.between {
+  background-color: #333;
+  color: white;
+}
+.main .sideb table td.active, .main .sideb table td.hover {
+  background: #f05855;
+  color: white;
+}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+	
+/** code by webdevtrick ( https://webdevtrick.com ) **/
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap");
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: #B8F0FF;
+  overflow: hidden;
+  position: relative;
+  outline: none;
+  perspective: 1000px;
+}
+ 
+.main {
+  position: absolute;
+  width: 730px;
+  height: 420px;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%);
+  transition: all 0.195s ease;
+  transform-style: preserve-3d;
+}
+.main.is-rotated-left {
+  transform: translate(-50%, -50%) rotateY(-4deg);
+}
+.main.is-rotated-right {
+  transform: translate(-50%, -50%) rotateY(4deg);
+}
+.main .sideb,
+.main .right-wrapper {
+  background-color: white;
+  width: 50%;
+  float: left;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.main .header {
+  padding: 15px 0 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.main .header i {
+  padding: 0 5px;
+  cursor: pointer;
+}
+.main .header span {
+  display: inline-block;
+  margin: 0 3px;
+  font-weight: 700;
+}
+.main .right-wrapper {
+  background-color: #f05855;
+  color: white;
+  transform-origin: left center;
+  transform: rotateY(110deg);
+  transition: all 0.5s;
+}
+.main .right-wrapper.is-active {
+  transform: rotateY(0deg);
+}
+.main .right-wrapper .header {
+  text-align: left;
+  justify-content: center;
+}
+.main .right-wrapper .day {
+  font-size: 12em;
+  text-indent: -12px;
+  display: block;
+}
+.main .right-wrapper .month {
+  font-size: 2.5em;
+}
+.main .sideb .showDate {
+  color: white;
+  text-align: right;
+  width: 100%;
+}
+.main .sideb .showDate i {
+  cursor: pointer;
+  background: #f05855;
+  border-radius: 4px;
+  padding: 8px 12px;
+  transform: scale(1);
+  transition: all 0.3s;
+}
+.main .sideb .showDate i.is-active {
+  transform: scale(-1);
+}
+.main .sideb table {
+  text-align: center;
+ 
+  width: 90%;
+  margin: 30px auto 0;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.main .sideb table tbody:before {
+  content: "-";
+  display: block;
+  line-height: 0.75em;
+  color: transparent;
+}
+.main .sideb table th {
+  color: #f05855;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.main .sideb table td {
+  padding: 11px 5px;
+  color: #ced0ce;
+  font-size: 0.75em;
+  transition: all 0.3s;
+  position: relative;
+}
+.main .sideb table td::before {
+  content: "";
+  display: none;
+  width: 50%;
+  height: 2px;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -8px);
+  background-color: #f05855;
+}
+.main .sideb table td.currentDay::before {
+  display: block;
+}
+.main .sideb table td.selectable {
+  color: #303633;
+  cursor: pointer;
+}
+.main .sideb table td.selectable:hover {
+  background: #f05855;
+  color: white;
+}
+.main .sideb table td.between {
+  background-color: #333;
+  color: white;
+}
+.main .sideb table td.active, .main .sideb table td.hover {
+  background: #f05855;
+  color: white;
+}

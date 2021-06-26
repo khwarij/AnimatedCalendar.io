@@ -13,8 +13,8 @@ body, html {
   perspective: 1000px;
 }
 h1 {
-  text-align: middle;
-  color: lawngreen;
+  text-align: center;
+  color: purple;
 }
 
 .main {
